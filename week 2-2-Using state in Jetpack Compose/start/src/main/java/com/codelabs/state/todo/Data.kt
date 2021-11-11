@@ -26,12 +26,16 @@ import androidx.compose.material.icons.filled.RestoreFromTrash
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.codelabs.state.R
 import java.util.UUID
+import kotlin.random.Random
 
 data class TodoItem(
     val task: String,
     val icon: TodoIcon = TodoIcon.Default,
     // since the user may generate identical tasks, give them each a unique ID
-    val id: UUID = UUID.randomUUID()
+    val id: UUID = UUID.randomUUID(),
+    val r: Float = Random.nextFloat().coerceIn(0.3f, 0.9f),
+    val g: Float = Random.nextFloat().coerceIn(0.3f, 0.9f),
+    val b: Float = Random.nextFloat().coerceIn(0.3f, 0.9f)
 )
 
 enum class TodoIcon(val imageVector: ImageVector, @StringRes val contentDescription: Int) {
